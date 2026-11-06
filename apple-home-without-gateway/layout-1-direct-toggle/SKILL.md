@@ -1,3 +1,8 @@
+---
+name: layout-1-direct-toggle
+description: 在没有家居中枢时，用一条本地 Mac 脚本通过 Home.app 开关单个 Apple Home 配件并回读状态。适用于单设备、仅需 on/off 的低复杂度场景。
+---
+
 # Layout 1: Direct Toggle
 
 ## 目标

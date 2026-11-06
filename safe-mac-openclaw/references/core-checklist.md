@@ -4,9 +4,7 @@ This file compresses the most reusable parts of the source project into an execu
 
 ## Source Attribution
 
-Distilled and adapted from the local project:
-
-- `/Users/silas/Desktop/openclaw-security-practice-guide`
+Distilled and adapted from the project `openclaw-security-practice-guide`.
 
 The source repository declares an MIT license. This skill is a concise derivative summary, not a verbatim copy of the full guide.
 

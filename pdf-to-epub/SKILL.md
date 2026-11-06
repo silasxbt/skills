@@ -1,6 +1,6 @@
 ---
 name: pdf-to-epub
-description: 将PDF文件转换为EPUB格式的电子书。使用Calibre的ebook-convert工具或Python的pdf2epub库进行转换，支持保留文本、图片和基本格式。适用于需要在电子书阅读器上阅读PDF内容的场景。
+description: 将PDF文件转换为EPUB格式的电子书。使用Calibre的ebook-convert工具进行转换，支持保留文本、图片和基本格式。适用于需要在电子书阅读器上阅读PDF内容的场景。
 ---
 
 # PDF to EPUB
@@ -26,11 +26,7 @@ description: 将PDF文件转换为EPUB格式的电子书。使用Calibre的ebook
 
 ## 转换方法
 
-该skill支持两种转换方式：
-
-### 方法1: Calibre ebook-convert（推荐）
-
-使用Calibre提供的命令行工具，转换质量高且功能强大。
+使用Calibre提供的命令行工具 `ebook-convert`，转换质量高且功能强大。
 
 优点：
 - 转换质量高
@@ -39,18 +35,6 @@ description: 将PDF文件转换为EPUB格式的电子书。使用Calibre的ebook
 
 缺点：
 - 需要安装Calibre应用
-
-### 方法2: Python pdf2epub库
-
-使用Python的pdf2epub或其他相关库进行转换。
-
-优点：
-- 轻量级
-- 可编程控制
-
-缺点：
-- 转换质量可能不如Calibre
-- 部分库可能缺乏维护
 
 ## 使用流程
 
