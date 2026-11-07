@@ -21,8 +21,8 @@ brew install --cask calibre
 ### 2. 使用转换脚本
 
 ```bash
-cd /Users/silas/Desktop/skills/pdf-to-epub
-./convert.sh ~/Desktop/币安人生.pdf
+cd pdf-to-epub
+./convert.sh ~/Documents/book.pdf
 ```
 
 ### 3. 手动转换

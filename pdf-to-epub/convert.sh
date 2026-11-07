@@ -13,7 +13,17 @@ if [ $# -lt 1 ]; then
 fi
 
 INPUT_FILE="$1"
-OUTPUT_FILE="${2:-${INPUT_FILE%.pdf}.epub}"
+
+# 扩展名不区分大小写
+case "$INPUT_FILE" in
+    *.[pP][dD][fF]) BASE_PATH="${INPUT_FILE%.*}" ;;
+    *)
+        echo "错误: 输入文件必须是 PDF: '$INPUT_FILE'"
+        exit 1
+        ;;
+esac
+
+OUTPUT_FILE="${2:-$BASE_PATH.epub}"
 
 # 检查输入文件是否存在
 if [ ! -f "$INPUT_FILE" ]; then
@@ -22,15 +32,18 @@ if [ ! -f "$INPUT_FILE" ]; then
 fi
 
 # 检查Calibre是否安装
-EBOOK_CONVERT="/Applications/calibre.app/Contents/MacOS/ebook-convert"
-if [ ! -f "$EBOOK_CONVERT" ]; then
+EBOOK_CONVERT="$(command -v ebook-convert || true)"
+if [ -z "$EBOOK_CONVERT" ]; then
+    EBOOK_CONVERT="/Applications/calibre.app/Contents/MacOS/ebook-convert"
+fi
+if [ ! -x "$EBOOK_CONVERT" ]; then
     echo "错误: 未找到Calibre，请先安装:"
     echo "brew install --cask calibre"
     exit 1
 fi
 
 # 提取文件名作为标题（去掉扩展名）
-TITLE=$(basename "$INPUT_FILE" .pdf)
+TITLE=$(basename "$BASE_PATH")
 
 echo "================================"
 echo "PDF to EPUB 转换工具"

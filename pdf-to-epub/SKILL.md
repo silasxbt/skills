@@ -1,6 +1,6 @@
 ---
 name: pdf-to-epub
-description: 将PDF文件转换为EPUB格式的电子书。使用Calibre的ebook-convert工具或Python的pdf2epub库进行转换，支持保留文本、图片和基本格式。适用于需要在电子书阅读器上阅读PDF内容的场景。
+description: 将PDF文件转换为EPUB格式的电子书。使用Calibre的ebook-convert工具进行转换，支持保留文本、图片和基本格式。适用于需要在电子书阅读器上阅读PDF内容的场景。
 ---
 
 # PDF to EPUB
@@ -26,11 +26,7 @@ description: 将PDF文件转换为EPUB格式的电子书。使用Calibre的ebook
 
 ## 转换方法
 
-该skill支持两种转换方式：
-
-### 方法1: Calibre ebook-convert（推荐）
-
-使用Calibre提供的命令行工具，转换质量高且功能强大。
+使用Calibre提供的命令行工具 `ebook-convert`，转换质量高且功能强大。
 
 优点：
 - 转换质量高
@@ -39,18 +35,6 @@ description: 将PDF文件转换为EPUB格式的电子书。使用Calibre的ebook
 
 缺点：
 - 需要安装Calibre应用
-
-### 方法2: Python pdf2epub库
-
-使用Python的pdf2epub或其他相关库进行转换。
-
-优点：
-- 轻量级
-- 可编程控制
-
-缺点：
-- 转换质量可能不如Calibre
-- 部分库可能缺乏维护
 
 ## 使用流程
 
@@ -97,14 +81,13 @@ ebook-convert input.pdf output.epub \
   --title "书名" \
   --language zh \
   --enable-heuristics \
-  --pdf-no-images=false \
   --chapter "//*[@class='chapter']" \
   --page-breaks-before "/"
 ```
 
 常用参数说明：
 - `--enable-heuristics`: 启用启发式处理，改善格式
-- `--pdf-no-images=false`: 保留图片
+- 图片默认保留，无需额外参数；只有 `--no-images` 才会移除图片
 - `--language zh`: 设置语言为中文
 - `--chapter`: 章节检测规则
 - `--margin-top/bottom/left/right`: 设置边距
@@ -125,7 +108,7 @@ done
 
 1. **文本提取质量**：如果PDF是扫描版（图片），转换质量会很差，建议先进行OCR处理
 2. **章节分割**：对于复杂的PDF，可能需要手动调整章节检测规则
-3. **图片处理**：确保设置`--pdf-no-images=false`以保留图片
+3. **图片处理**：图片默认保留，不要添加`--no-images`
 4. **字体问题**：部分特殊字体可能无法正确显示，这是PDF格式本身的限制
 
 ## 验证转换结果

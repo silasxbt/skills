@@ -1,3 +1,8 @@
+---
+name: layout-2-automation-stack
+description: 在没有家居中枢时，用本地 Mac 的分层脚本、launchd 调度和日志长期自动控制 Apple Home 配件。适用于定时开关、需要日志追踪和可维护性的场景。
+---
+
 # Layout 2: Automation Stack
 
 ## 目标
