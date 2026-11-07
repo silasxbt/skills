@@ -11,6 +11,8 @@
 | [claude-ui](claude-ui/SKILL.md) | 为界面应用 Claude 风格的视觉语言 |
 | [pdf-to-epub](pdf-to-epub/SKILL.md) | 用 Calibre 将 PDF 转换为 EPUB |
 | [safe-mac-openclaw](safe-mac-openclaw/SKILL.md) | 加固 macOS 上的个人 OpenClaw 环境 |
+| [stripe-payments-risk](stripe-payments-risk/SKILL.md) | 按用户提供的参考资料回答 Stripe 支付与风控问题 |
+| [yetone-workflow](yetone-workflow/SKILL.md) | 按需 AI 开发工作流：明确任务、记录决策、按风险验证和事件驱动复盘 |
 
 ## 目录结构变更
 
