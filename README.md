@@ -1,5 +1,7 @@
 # skills
 
+**中文** | [English](README.en.md)
+
 收录高实用性、配置简单的 skills 和参考资料包，不定期更新，欢迎 PR。
 
 ## 目录
