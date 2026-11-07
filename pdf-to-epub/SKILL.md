@@ -81,14 +81,13 @@ ebook-convert input.pdf output.epub \
   --title "书名" \
   --language zh \
   --enable-heuristics \
-  --pdf-no-images=false \
   --chapter "//*[@class='chapter']" \
   --page-breaks-before "/"
 ```
 
 常用参数说明：
 - `--enable-heuristics`: 启用启发式处理，改善格式
-- `--pdf-no-images=false`: 保留图片
+- 图片默认保留，无需额外参数；只有 `--no-images` 才会移除图片
 - `--language zh`: 设置语言为中文
 - `--chapter`: 章节检测规则
 - `--margin-top/bottom/left/right`: 设置边距
@@ -109,7 +108,7 @@ done
 
 1. **文本提取质量**：如果PDF是扫描版（图片），转换质量会很差，建议先进行OCR处理
 2. **章节分割**：对于复杂的PDF，可能需要手动调整章节检测规则
-3. **图片处理**：确保设置`--pdf-no-images=false`以保留图片
+3. **图片处理**：图片默认保留，不要添加`--no-images`
 4. **字体问题**：部分特殊字体可能无法正确显示，这是PDF格式本身的限制
 
 ## 验证转换结果

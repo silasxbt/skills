@@ -65,17 +65,14 @@ ebook-convert input.pdf output.epub --input-encoding utf-8
 
 3. 尝试不同的PDF引擎：
 ```bash
-ebook-convert input.pdf output.epub --pdf-engine podofo
+ebook-convert input.pdf output.epub --pdf-engine pdftohtml
 ```
 
 ### Q4: 图片丢失或质量下降
 
 **解决方案**：
 
-1. 确保保留图片：
-```bash
---pdf-no-images=false
-```
+1. 确认命令中没有 `--no-images`（图片默认保留）
 
 2. 保持封面比例：
 ```bash
@@ -91,9 +88,9 @@ ebook-convert input.pdf output.epub --pdf-engine podofo
 
 **解决方案**：
 
-1. 使用PDF内嵌目录：
+1. 使用自动生成的目录：
 ```bash
---pdf-use-toc
+--use-auto-toc
 ```
 
 2. 手动设置章节检测规则：
@@ -289,7 +286,7 @@ done
 1. 压缩图片
 2. 移除不必要的图片：
 ```bash
---pdf-no-images
+--no-images
 ```
 
 3. 使用压缩工具优化EPUB

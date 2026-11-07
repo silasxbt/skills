@@ -70,18 +70,17 @@ ebook-convert input_file output_file [options]
 ### PDF特定参数
 
 ```bash
---pdf-no-images=false          # 保留图片
---pdf-use-toc                  # 使用PDF的目录
---pdf-unmarked-toc             # 使用未标记的目录
---pdf-engine                   # PDF引擎选择
+--no-images                    # 移除图片（默认保留）
+--pdf-engine calibre           # PDF引擎选择：calibre（推荐）或 pdftohtml
+--use-auto-toc                 # 始终使用自动生成的目录
 ```
 
 ### 布局和格式参数
 
 ```bash
 --enable-heuristics            # 启用启发式格式处理
---markup-chapter-headings      # 标记章节标题
---italicize-patterns           # 斜体模式
+--disable-markup-chapter-headings  # 启用启发式后，关闭章节标题标记
+--disable-italicize-common-cases   # 启用启发式后，关闭常见斜体识别
 --smarten-punctuation          # 智能标点
 --unsmarten-punctuation        # 禁用智能标点
 ```
@@ -140,7 +139,6 @@ ebook-convert "币安人生.pdf" "币安人生.epub" \
 ebook-convert input.pdf output.epub \
   --language zh \
   --enable-heuristics \
-  --pdf-no-images=false \
   --margin-top 72 \
   --margin-bottom 72 \
   --margin-left 72 \
@@ -157,8 +155,7 @@ for file in *.pdf; do
   echo "Converting $file to $output..."
   ebook-convert "$file" "$output" \
     --language zh \
-    --enable-heuristics \
-    --pdf-no-images=false
+    --enable-heuristics
 done
 ```
 
@@ -208,10 +205,10 @@ ebook-convert input.pdf output.epub 2>&1 | tee conversion.log
 ## 常见问题
 
 ### Q: 转换后章节目录丢失
-A: 尝试添加`--pdf-use-toc`参数，或手动设置章节检测规则
+A: 尝试添加`--use-auto-toc`参数，或手动设置章节检测规则
 
 ### Q: 图片质量变差
-A: 使用`--pdf-no-images=false`确保保留图片
+A: 图片默认保留，确认命令中没有`--no-images`
 
 ### Q: 转换速度很慢
 A: PDF转换本身较慢，特别是大文件，需要耐心等待

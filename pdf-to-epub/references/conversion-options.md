@@ -26,10 +26,8 @@
 
 | 参数 | 说明 | 默认值 | 推荐值 |
 |------|------|--------|--------|
-| `--pdf-no-images` | 是否移除图片 | false | false |
-| `--pdf-use-toc` | 使用PDF内嵌目录 | false | true（如有目录） |
-| `--pdf-unmarked-toc` | 使用未标记的目录 | false | - |
-| `--pdf-engine` | PDF解析引擎 | auto | auto |
+| `--no-images` | 移除图片 | 不启用 | 不启用 |
+| `--pdf-engine` | PDF解析引擎：`calibre` 或 `pdftohtml` | calibre | calibre |
 
 ### 3. 格式处理参数
 
@@ -38,11 +36,11 @@
 | 参数 | 说明 | 推荐使用场景 |
 |------|------|-------------|
 | `--enable-heuristics` | 启用智能格式处理 | 大多数情况 |
-| `--markup-chapter-headings` | 标记章节标题 | 有明确章节的书籍 |
-| `--italicize-patterns` | 斜体化特定模式 | 需要强调特定文本 |
+| `--disable-markup-chapter-headings` | 启用启发式后，关闭章节标题标记 | 标题被误识别 |
+| `--disable-italicize-common-cases` | 启用启发式后，关闭常见斜体识别 | 文本被误设为斜体 |
 | `--smarten-punctuation` | 智能标点转换 | 英文书籍 |
 | `--unsmarten-punctuation` | 禁用智能标点 | 中文或代码书籍 |
-| `--unwrap-lines` | 解除换行 | PDF文本有异常换行 |
+| `--disable-unwrap-lines` | 启用启发式后，关闭解除换行 | 换行被错误合并 |
 
 ### 4. 章节和目录参数
 
@@ -105,8 +103,7 @@ ebook-convert input.pdf output.epub \
   --chapter-mark pagebreak \
   --margin-top 72 \
   --margin-bottom 72 \
-  --base-font-size 16 \
-  --pdf-no-images=false
+  --base-font-size 16
 ```
 
 ### 场景2：技术书籍（带代码）
@@ -116,7 +113,6 @@ ebook-convert input.pdf output.epub \
   --title "技术书" \
   --language zh \
   --unsmarten-punctuation \
-  --pdf-no-images=false \
   --preserve-cover-aspect-ratio \
   --base-font-size 14
 ```
@@ -128,7 +124,6 @@ ebook-convert input.pdf output.epub \
   --title "图文书" \
   --language zh \
   --enable-heuristics \
-  --pdf-no-images=false \
   --preserve-cover-aspect-ratio \
   --no-default-epub-cover
 ```
@@ -140,8 +135,7 @@ ebook-convert input.pdf output.epub \
   --title "扫描书" \
   --language zh \
   --enable-heuristics \
-  --pdf-use-toc \
-  --unwrap-lines \
+  --use-auto-toc \
   --margin-top 50 \
   --margin-bottom 50
 ```
@@ -164,7 +158,7 @@ ebook-convert input.pdf output.epub \
 
 1. 命令行参数 > 配置文件参数
 2. 后面的参数会覆盖前面的同类参数
-3. 布尔参数使用`--param=false`来禁用
+3. 布尔参数不带值，写上即启用
 
 ## 常见参数错误
 
@@ -182,10 +176,10 @@ ebook-convert input.pdf output.epub \
 
 ```bash
 # 错误
---pdf-no-images false
+--no-images false
 
-# 正确
---pdf-no-images=false
+# 正确（布尔参数不带值）
+--no-images
 ```
 
 ### 错误3：路径包含空格未加引号
